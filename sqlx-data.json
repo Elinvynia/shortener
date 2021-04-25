@@ -1,0 +1,58 @@
+{
+  "db": "MySQL",
+  "072be00f4c6d7ea8d9e74829aba9e271c62e70dab613ba8ecf730ef6053d98e2": {
+    "query": "INSERT INTO session (user_id, session, data) VALUES (?, ?, ?)",
+    "describe": {
+      "columns": [],
+      "parameters": {
+        "Right": 3
+      },
+      "nullable": []
+    }
+  },
+  "08cf5f017ddb20c2154fc8c45d18bb92bc671bb8046136c96f63a60ac83b402d": {
+    "query": "DELETE FROM session WHERE session = ?",
+    "describe": {
+      "columns": [],
+      "parameters": {
+        "Right": 1
+      },
+      "nullable": []
+    }
+  },
+  "7e48b7fde3994e2a62fbae6834fe4e89a4ed71f4482c061c1e4a9d5576730295": {
+    "query": "DELETE FROM session",
+    "describe": {
+      "columns": [],
+      "parameters": {
+        "Right": 0
+      },
+      "nullable": []
+    }
+  },
+  "f497535af66056c8313ba2f7796e1b2bacec01c54a781291e39fbda1f84aff0b": {
+    "query": "SELECT data FROM session WHERE session = ?",
+    "describe": {
+      "columns": [
+        {
+          "ordinal": 0,
+          "name": "data",
+          "type_info": {
+            "type": "VarString",
+            "flags": {
+              "bits": 4097
+            },
+            "char_set": 224,
+            "max_size": 8000
+          }
+        }
+      ],
+      "parameters": {
+        "Right": 1
+      },
+      "nullable": [
+        false
+      ]
+    }
+  }
+}
