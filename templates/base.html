@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Shortener</title>
+    <link rel="stylesheet" href="/static/css/bulma.css">
+    <link rel="stylesheet" href="/static/css/fontawesome.css">
+</head>
+<body>
+    <nav class="navbar" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div id="main-nav" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="/">
+                    <span class="icon">
+                        <i class="fas fa-stream"></i>
+                    </span>
+                    <span>Shortener</span>
+                </a>
+            </div>
+
+            <div class="navbar-end">
+                <a href="/login" class="navbar-item">
+                    <span class="icon">
+                        <i class="fas fa-user"></i>
+                    </span>
+                    <span>Login</span>
+                </a>
+                <a href="/register" class="navbar-item">
+                    <span class="icon">
+                        <i class="fas fa-user-plus"></i>
+                    </span>
+                    <span>Register</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+    <div class="section">
+        <div class="container">
+            {% block content %}
+            {% endblock content %}
+        </div>
+    </div>
+</body>
+</html>

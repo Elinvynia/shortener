@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="columns">
+    <div class="column is-half is-offset-one-quarter">
+        <h1 class="title">Create new account</h1>
+
+        {% if error %}
+        <div class="notification is-danger">
+            {{ error }}
+        </div>
+        {% endif %}
+
+        <form action="/register" method="post">
+            <div class="field">
+                <p class="control has-icons-left">
+                    <input name="username" type="text" class="input" placeholder="Username" autofocus>
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-user"></i>
+                    </span>
+                </p>
+            </div>
+
+            <div class="field">
+                <p class="control has-icons-left">
+                    <input name="password" type="password" class="input" placeholder="Password">
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-lock"></i>
+                    </span>
+                </p>
+            </div>
+
+            <div class="field">
+                <p class="control has-icons-left">
+                    <input name="password_confirm" type="password" class="input" placeholder="Confirm password">
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-lock"></i>
+                    </span>
+                </p>
+            </div>
+
+            <div class="field">
+                <div class="control">
+                    <button class="button is-success">Create account</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock content %}
