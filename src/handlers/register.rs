@@ -18,8 +18,8 @@ pub async fn register_get(req: Request<State>) -> tide::Result<Response> {
 pub async fn register_post(mut req: Request<State>) -> tide::Result<Response> {
     let data: RegisterData = req.body_form().await?;
 
-    if data.password != data.password_repeat {
-        let response = error(req.state(), "template", "Passwords don't match.")?;
+    if data.password != data.password_confirm {
+        let response = error(req.state(), "register.html", "Passwords don't match.")?;
         return Ok(response);
     }
 
@@ -28,7 +28,7 @@ pub async fn register_post(mut req: Request<State>) -> tide::Result<Response> {
         .fetch_optional(pool)
         .await?;
     if query.is_some() {
-        let response = error(req.state(), "template", "User with this name already exists.")?;
+        let response = error(req.state(), "register.html", "User with this name already exists.")?;
         return Ok(response);
     }
 

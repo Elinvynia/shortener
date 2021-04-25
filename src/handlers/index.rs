@@ -9,7 +9,7 @@ pub async fn index_get(req: Request<State>) -> tide::Result<Response> {
     let user = user(req.session());
     context.insert("user", &user);
 
-    let rendered = state.render("index.html")?;
+    let rendered = state.with_context("index.html", &context)?;
     let response = html(rendered);
     Ok(response)
 }

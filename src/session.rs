@@ -55,7 +55,12 @@ impl SessionStore for DbStore {
     }
 
     async fn destroy_session(&self, session: Session) -> anyhow::Result<()> {
-        if let Some(cookie) = session.into_cookie_value() {
+        if let Some(id) = session.get::<u64>("user_id") {
+            let pool = self.pool();
+            sqlx::query!("DELETE FROM session WHERE user_id = ?", &id)
+                .execute(pool)
+                .await?;
+        } else if let Some(cookie) = session.into_cookie_value() {
             let pool = self.pool();
             sqlx::query!("DELETE FROM session WHERE session = ?", &cookie)
                 .execute(pool)

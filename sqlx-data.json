@@ -30,6 +30,16 @@
       "nullable": []
     }
   },
+  "7cfeec969651f78a1ca02018f426d876308be6a2e57eba5e36ad878620faefff": {
+    "query": "DELETE FROM session WHERE user_id = ?",
+    "describe": {
+      "columns": [],
+      "parameters": {
+        "Right": 1
+      },
+      "nullable": []
+    }
+  },
   "7e48b7fde3994e2a62fbae6834fe4e89a4ed71f4482c061c1e4a9d5576730295": {
     "query": "DELETE FROM session",
     "describe": {
@@ -40,8 +50,104 @@
       "nullable": []
     }
   },
+  "8b34d41cde0543a987857bef789b9eabc31ad61020e0c978db4c05da38c19d17": {
+    "query": "INSERT INTO shortcut (id, destination, datetime) VALUES (?, ?, NOW())",
+    "describe": {
+      "columns": [],
+      "parameters": {
+        "Right": 2
+      },
+      "nullable": []
+    }
+  },
+  "a3c9381ba1c1ce258f3309e4cc82430ebed9102a756002ff48777f41b61ea640": {
+    "query": "SELECT destination FROM shortcut WHERE id = ?",
+    "describe": {
+      "columns": [
+        {
+          "ordinal": 0,
+          "name": "destination",
+          "type_info": {
+            "type": "VarString",
+            "flags": {
+              "bits": 4097
+            },
+            "char_set": 224,
+            "max_size": 4000
+          }
+        }
+      ],
+      "parameters": {
+        "Right": 1
+      },
+      "nullable": [
+        false
+      ]
+    }
+  },
   "c6fd001247a7d00ff678efaf200f373293cedc44182733e05af9f7c743b6ab3d": {
     "query": "SELECT * FROM user WHERE username = ?",
+    "describe": {
+      "columns": [
+        {
+          "ordinal": 0,
+          "name": "id",
+          "type_info": {
+            "type": "Long",
+            "flags": {
+              "bits": 515
+            },
+            "char_set": 63,
+            "max_size": 11
+          }
+        },
+        {
+          "ordinal": 1,
+          "name": "username",
+          "type_info": {
+            "type": "VarString",
+            "flags": {
+              "bits": 4097
+            },
+            "char_set": 224,
+            "max_size": 400
+          }
+        },
+        {
+          "ordinal": 2,
+          "name": "password",
+          "type_info": {
+            "type": "VarString",
+            "flags": {
+              "bits": 4097
+            },
+            "char_set": 224,
+            "max_size": 400
+          }
+        }
+      ],
+      "parameters": {
+        "Right": 1
+      },
+      "nullable": [
+        false,
+        false,
+        false
+      ]
+    }
+  },
+  "e0a9d9d6b11ef4c66201c970f3647cf9d4dea5ca98506f397cc793c14c951977": {
+    "query": "INSERT INTO shortcut (id, destination, datetime, created_by) VALUES (?, ?, NOW(), ?)",
+    "describe": {
+      "columns": [],
+      "parameters": {
+        "Right": 3
+      },
+      "nullable": []
+    }
+  },
+  "f2eeb3af38989468089d5585cf4a767d21f4a3a84b996167540b2f9a86849b70": {
+    "query": "SELECT id, username, password FROM user WHERE username = ?",
     "describe": {
       "columns": [
         {

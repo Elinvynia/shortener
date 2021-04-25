@@ -4,6 +4,8 @@ mod index;
 pub use index::index_get;
 mod login;
 pub use login::{login_get, login_post};
+mod logout;
+pub use logout::logout_get;
 mod register;
 pub use register::{register_get, register_post};
 mod shortcut;

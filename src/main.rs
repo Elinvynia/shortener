@@ -30,6 +30,7 @@ async fn main() {
     app.at("/").get(index_get);
     app.at("/create").post(create_post);
     app.at("/login").get(login_get).post(login_post);
+    app.at("/log_out").get(logout_get);
     app.at("/register").get(register_get).post(register_post);
     app.at("*").get(shortcut_get);
 

@@ -1954,6 +1954,7 @@ dependencies = [
  "sqlx",
  "tera",
  "tide",
+ "url",
 ]
 
 [[package]]

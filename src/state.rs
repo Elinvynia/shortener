@@ -27,11 +27,10 @@ impl State {
 
     pub fn with_context<T: AsRef<str>>(&self, template: T, context: &Context) -> tide::Result<String> {
         let template = template.as_ref();
-        Ok(self.tera().render(template, &context)?)
+        Ok(self.tera().render(template, &context).expect("Failed to render"))
     }
 
     pub fn error<T: AsRef<str>>(&self, template: T, error: T) -> tide::Result<String> {
-        let template = template.as_ref();
         let error = error.as_ref();
         let mut context = Context::new();
         context.insert("error", error);

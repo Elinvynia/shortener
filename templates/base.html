@@ -28,6 +28,14 @@
             </div>
 
             <div class="navbar-end">
+                {% if user.logged_in %}
+                <a href="/log_out" class="navbar-item">
+                    <span class="icon">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </span>
+                    <span>Logout</span>
+                </a>
+                {% else %}
                 <a href="/login" class="navbar-item">
                     <span class="icon">
                         <i class="fas fa-user"></i>
@@ -40,6 +48,7 @@
                     </span>
                     <span>Register</span>
                 </a>
+                {% endif %}
             </div>
         </div>
     </nav>

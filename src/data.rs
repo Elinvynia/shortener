@@ -17,5 +17,10 @@ pub struct LoginData {
 pub struct RegisterData {
     pub username: String,
     pub password: String,
-    pub password_repeat: String,
+    pub password_confirm: String,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct UrlData {
+    pub url: String,
 }
