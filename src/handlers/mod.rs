@@ -1,6 +1,10 @@
 mod create;
-pub use create::create_handler;
+pub use create::create_post;
 mod index;
-pub use index::index_handler;
+pub use index::index_get;
+mod login;
+pub use login::{login_get, login_post};
+mod register;
+pub use register::{register_get, register_post};
 mod shortcut;
-pub use shortcut::shortcut_handler;
+pub use shortcut::shortcut_get;

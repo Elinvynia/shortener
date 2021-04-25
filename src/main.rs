@@ -27,9 +27,12 @@ async fn main() {
     let state = State::new(pool.clone(), tera);
     let mut app = tide::with_state(state);
 
-    app.at("/").get(index_handler);
-    app.at("/create").post(create_handler);
-    app.at("*").get(shortcut_handler);
+    app.at("/").get(index_get);
+    app.at("/create").post(create_post);
+    app.at("/login").get(login_get).post(login_post);
+    app.at("/register").get(register_get).post(register_post);
+    app.at("*").get(shortcut_get);
+
     app.at("/static")
         .serve_dir("static/")
         .expect("Failed to serve static dir.");

@@ -6,6 +6,11 @@
     {{ error }}
 </div>
 {% endif %}
+{% if message %}
+<div class="notification is-help">
+    {{ message }}
+</div>
+{% endif %}
 
 <article class="message is-success">
     <div class="message-header">

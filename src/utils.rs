@@ -1,4 +1,5 @@
 use crate::data::User;
+use crate::state::State;
 use nanoid::nanoid;
 use tide::http::mime;
 use tide::sessions::Session;
@@ -10,6 +11,11 @@ const ALPHABET: [char; 57] = [
     'Y', 'Z', '1', '2', '3', '4', '5', '6', '7', '8', '9',
 ];
 
+pub fn error<T: AsRef<str>>(state: &State, template: T, error: T) -> tide::Result<Response> {
+    let rendered = state.error(template, error)?;
+    Ok(html(rendered))
+}
+
 pub fn id() -> String {
     nanoid!(5, &ALPHABET)
 }
@@ -17,6 +23,13 @@ pub fn id() -> String {
 pub fn html<B: AsRef<str>>(body: B) -> Response {
     let body = body.as_ref();
     Response::builder(200).content_type(mime::HTML).body(body).build()
+}
+
+pub fn redirect<L: AsRef<str>>(location: L) -> Response {
+    Response::builder(302)
+        .body("")
+        .header("location", location.as_ref())
+        .build()
 }
 
 pub fn user(session: &Session) -> User {

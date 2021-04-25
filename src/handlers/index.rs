@@ -3,7 +3,7 @@ use crate::State;
 use tera::Context;
 use tide::{Request, Response};
 
-pub async fn index_handler(req: Request<State>) -> tide::Result<Response> {
+pub async fn index_get(req: Request<State>) -> tide::Result<Response> {
     let state = req.state();
     let mut context = Context::new();
     let user = user(req.session());

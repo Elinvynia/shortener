@@ -6,3 +6,16 @@ pub struct User {
     pub id: u64,
     pub username: String,
 }
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct LoginData {
+    pub username: String,
+    pub password: String,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct RegisterData {
+    pub username: String,
+    pub password: String,
+    pub password_repeat: String,
+}

@@ -1,5 +1,15 @@
 {
   "db": "MySQL",
+  "03621ac411f842e365db429927e41dfbe2088740a0acd763d36add0853a3c8b9": {
+    "query": "INSERT INTO user (username, password) VALUES (?, ?)",
+    "describe": {
+      "columns": [],
+      "parameters": {
+        "Right": 2
+      },
+      "nullable": []
+    }
+  },
   "072be00f4c6d7ea8d9e74829aba9e271c62e70dab613ba8ecf730ef6053d98e2": {
     "query": "INSERT INTO session (user_id, session, data) VALUES (?, ?, ?)",
     "describe": {
@@ -28,6 +38,57 @@
         "Right": 0
       },
       "nullable": []
+    }
+  },
+  "c6fd001247a7d00ff678efaf200f373293cedc44182733e05af9f7c743b6ab3d": {
+    "query": "SELECT * FROM user WHERE username = ?",
+    "describe": {
+      "columns": [
+        {
+          "ordinal": 0,
+          "name": "id",
+          "type_info": {
+            "type": "Long",
+            "flags": {
+              "bits": 515
+            },
+            "char_set": 63,
+            "max_size": 11
+          }
+        },
+        {
+          "ordinal": 1,
+          "name": "username",
+          "type_info": {
+            "type": "VarString",
+            "flags": {
+              "bits": 4097
+            },
+            "char_set": 224,
+            "max_size": 400
+          }
+        },
+        {
+          "ordinal": 2,
+          "name": "password",
+          "type_info": {
+            "type": "VarString",
+            "flags": {
+              "bits": 4097
+            },
+            "char_set": 224,
+            "max_size": 400
+          }
+        }
+      ],
+      "parameters": {
+        "Right": 1
+      },
+      "nullable": [
+        false,
+        false,
+        false
+      ]
     }
   },
   "f497535af66056c8313ba2f7796e1b2bacec01c54a781291e39fbda1f84aff0b": {
