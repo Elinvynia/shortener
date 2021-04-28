@@ -29,9 +29,11 @@ async fn main() {
 
     app.at("/").get(index_get);
     app.at("/create").post(create_post);
+    app.at("/delete/:code").get(delete_get);
     app.at("/login").get(login_get).post(login_post);
     app.at("/log_out").get(logout_get);
     app.at("/register").get(register_get).post(register_post);
+    app.at("/dashboard").get(dashboard_get);
     app.at("*").get(shortcut_get);
 
     app.at("/static")

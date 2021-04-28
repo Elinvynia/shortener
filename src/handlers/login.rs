@@ -25,14 +25,14 @@ pub async fn login_post(mut req: Request<State>) -> tide::Result<Response> {
     .fetch_optional(pool)
     .await?;
     if query.is_none() {
-        let response = error(req.state(), "login.html", "User not found.")?;
+        let response = error(&req, "login.html", "User not found.")?;
         return Ok(response);
     }
 
     let query = query.unwrap();
     let result = verify(&data.password, &query.password)?;
     if !result {
-        let response = error(req.state(), "login.html", "Invalid password.")?;
+        let response = error(&req, "login.html", "Invalid password.")?;
         return Ok(response);
     }
 

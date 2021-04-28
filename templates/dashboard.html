@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% for url in urls %}
+    Shortcut URL: <a href='/{{ url.id }}'>{{ url.id }}</a><br>
+    Destination: <a href='{{ url.destination }}'>{{ url.destination }}</a><br>
+    Created at: {{ url.created_at }}<br>
+    <a href='/delete/{{ url.delete_code }}'>Delete</a><br>
+    <br><br><br>
+{% endfor %}
+
+{% endblock content %}

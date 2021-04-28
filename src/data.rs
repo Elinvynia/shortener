@@ -8,6 +8,14 @@ pub struct User {
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct Url {
+    pub id: String,
+    pub destination: String,
+    pub created_at: String,
+    pub delete_code: String,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct LoginData {
     pub username: String,
     pub password: String,

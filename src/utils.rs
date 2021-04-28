@@ -1,9 +1,10 @@
+use crate::ctx;
 use crate::data::User;
 use crate::state::State;
 use nanoid::nanoid;
 use tide::http::mime;
 use tide::sessions::Session;
-use tide::Response;
+use tide::{Request, Response};
 
 const ALPHABET: [char; 57] = [
     'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'm', 'n', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y',
@@ -11,13 +12,24 @@ const ALPHABET: [char; 57] = [
     'Y', 'Z', '1', '2', '3', '4', '5', '6', '7', '8', '9',
 ];
 
-pub fn error<T: AsRef<str>>(state: &State, template: T, error: T) -> tide::Result<Response> {
-    let rendered = state.error(template, error)?;
+pub fn error<T: AsRef<str>>(req: &Request<State>, template: T, error: T) -> tide::Result<Response> {
+    let error = error.as_ref();
+    let user = user(req.session());
+    let context = ctx!("error" => error, "user" => user);
+    let rendered = req.state().with_context(template, &context)?;
     Ok(html(rendered))
 }
 
-pub fn id() -> String {
-    nanoid!(5, &ALPHABET)
+pub fn message<T: AsRef<str>>(req: &Request<State>, template: T, message: T) -> tide::Result<Response> {
+    let message = message.as_ref();
+    let user = user(req.session());
+    let context = ctx!("message" => message, "user" => user);
+    let rendered = req.state().with_context(template, &context)?;
+    Ok(html(rendered))
+}
+
+pub fn generate_id(length: usize) -> String {
+    nanoid!(length, &ALPHABET)
 }
 
 pub fn html<B: AsRef<str>>(body: B) -> Response {
@@ -44,4 +56,18 @@ pub fn user(session: &Session) -> User {
     }
 
     user
+}
+
+#[macro_export]
+macro_rules! ctx {
+    ($($key:expr => $value:expr,)+) => { context!($($key => $value),+) };
+    ($($key:expr => $value:expr),*) => {
+        {
+            let mut _context = ::tera::Context::new();
+            $(
+                _context.insert($key, &$value);
+            )*
+            _context
+        }
+     };
 }

@@ -1,5 +1,9 @@
 mod create;
 pub use create::create_post;
+mod dashboard;
+pub use dashboard::dashboard_get;
+mod delete;
+pub use delete::delete_get;
 mod index;
 pub use index::index_get;
 mod login;

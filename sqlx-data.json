@@ -30,6 +30,100 @@
       "nullable": []
     }
   },
+  "0de6aaaa80f4db5e253917e47b0b6307ab39f2e29cd056cdced031f7e0c2a4f9": {
+    "query": "INSERT INTO shortcut (id, destination, datetime, created_by, delete_code) VALUES (?, ?, NOW(), ?, ?)",
+    "describe": {
+      "columns": [],
+      "parameters": {
+        "Right": 4
+      },
+      "nullable": []
+    }
+  },
+  "1402b1ed98214b29ce7651c293e75b41c3b87ff6a9ed304ab2361c616c739cc1": {
+    "query": "SELECT id, destination, datetime, delete_code FROM shortcut WHERE created_by = ? ORDER BY datetime DESC",
+    "describe": {
+      "columns": [
+        {
+          "ordinal": 0,
+          "name": "id",
+          "type_info": {
+            "type": "VarString",
+            "flags": {
+              "bits": 4099
+            },
+            "char_set": 224,
+            "max_size": 200
+          }
+        },
+        {
+          "ordinal": 1,
+          "name": "destination",
+          "type_info": {
+            "type": "VarString",
+            "flags": {
+              "bits": 4097
+            },
+            "char_set": 224,
+            "max_size": 4000
+          }
+        },
+        {
+          "ordinal": 2,
+          "name": "datetime",
+          "type_info": {
+            "type": "Datetime",
+            "flags": {
+              "bits": 4225
+            },
+            "char_set": 63,
+            "max_size": 19
+          }
+        },
+        {
+          "ordinal": 3,
+          "name": "delete_code",
+          "type_info": {
+            "type": "VarString",
+            "flags": {
+              "bits": 4097
+            },
+            "char_set": 224,
+            "max_size": 200
+          }
+        }
+      ],
+      "parameters": {
+        "Right": 1
+      },
+      "nullable": [
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  },
+  "17fbd16e1537ffe4258368b74184d58f79365dcca6755d2d0c79652d08647d27": {
+    "query": "DELETE FROM shortcut WHERE delete_code = ?",
+    "describe": {
+      "columns": [],
+      "parameters": {
+        "Right": 1
+      },
+      "nullable": []
+    }
+  },
+  "5954695ec073ea4c0ff96f5915a495496b66ccb1925f80e73763778d1c2db5d4": {
+    "query": "INSERT INTO shortcut (id, destination, datetime, delete_code) VALUES (?, ?, NOW(), ?)",
+    "describe": {
+      "columns": [],
+      "parameters": {
+        "Right": 3
+      },
+      "nullable": []
+    }
+  },
   "7cfeec969651f78a1ca02018f426d876308be6a2e57eba5e36ad878620faefff": {
     "query": "DELETE FROM session WHERE user_id = ?",
     "describe": {
@@ -46,16 +140,6 @@
       "columns": [],
       "parameters": {
         "Right": 0
-      },
-      "nullable": []
-    }
-  },
-  "8b34d41cde0543a987857bef789b9eabc31ad61020e0c978db4c05da38c19d17": {
-    "query": "INSERT INTO shortcut (id, destination, datetime) VALUES (?, ?, NOW())",
-    "describe": {
-      "columns": [],
-      "parameters": {
-        "Right": 2
       },
       "nullable": []
     }
@@ -136,14 +220,81 @@
       ]
     }
   },
-  "e0a9d9d6b11ef4c66201c970f3647cf9d4dea5ca98506f397cc793c14c951977": {
-    "query": "INSERT INTO shortcut (id, destination, datetime, created_by) VALUES (?, ?, NOW(), ?)",
+  "f08c874718ee5ccc63be7353ddf018b29a57276780fa6540667786002cd4af9b": {
+    "query": "SELECT * FROM shortcut WHERE delete_code = ?",
     "describe": {
-      "columns": [],
+      "columns": [
+        {
+          "ordinal": 0,
+          "name": "id",
+          "type_info": {
+            "type": "VarString",
+            "flags": {
+              "bits": 4099
+            },
+            "char_set": 224,
+            "max_size": 200
+          }
+        },
+        {
+          "ordinal": 1,
+          "name": "destination",
+          "type_info": {
+            "type": "VarString",
+            "flags": {
+              "bits": 4097
+            },
+            "char_set": 224,
+            "max_size": 4000
+          }
+        },
+        {
+          "ordinal": 2,
+          "name": "datetime",
+          "type_info": {
+            "type": "Datetime",
+            "flags": {
+              "bits": 4225
+            },
+            "char_set": 63,
+            "max_size": 19
+          }
+        },
+        {
+          "ordinal": 3,
+          "name": "created_by",
+          "type_info": {
+            "type": "Long",
+            "flags": {
+              "bits": 8
+            },
+            "char_set": 63,
+            "max_size": 11
+          }
+        },
+        {
+          "ordinal": 4,
+          "name": "delete_code",
+          "type_info": {
+            "type": "VarString",
+            "flags": {
+              "bits": 4097
+            },
+            "char_set": 224,
+            "max_size": 200
+          }
+        }
+      ],
       "parameters": {
-        "Right": 3
+        "Right": 1
       },
-      "nullable": []
+      "nullable": [
+        false,
+        false,
+        false,
+        true,
+        false
+      ]
     }
   },
   "f2eeb3af38989468089d5585cf4a767d21f4a3a84b996167540b2f9a86849b70": {

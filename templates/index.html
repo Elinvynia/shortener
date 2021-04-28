@@ -3,12 +3,12 @@
 
 {% if error %}
 <div class="notification is-danger">
-    {{ error }}
+    {{ error | safe }}
 </div>
 {% endif %}
 {% if message %}
 <div class="notification is-help">
-    {{ message }}
+    {{ message | safe }}
 </div>
 {% endif %}
 
